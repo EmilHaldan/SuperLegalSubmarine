@@ -9,6 +9,7 @@ def rc_time(pin):
 
     GPIO.setup(pin, GPIO.IN)
     print("Reading pin {}".format(pin))
+    print("GPIO.input(pin): ", GPIO.input(pin))
     if GPIO.input(pin) == GPIO.LOW:
         return 1
     elif GPIO.input(pin) == -GPIO.LOW:
@@ -28,7 +29,7 @@ try:
         x_axis_value = rc_time(x_axis_pin)
         y_axis_value = rc_time(y_axis_pin)
         print("X-axis: {}, Y-axis: {}".format(x_axis_value, y_axis_value))
-        time.sleep(0.05)
+        time.sleep(0.2)
 except KeyboardInterrupt:
     GPIO.cleanup()
     print("Exiting")

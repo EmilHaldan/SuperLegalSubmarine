@@ -5,13 +5,15 @@ def rc_time(pin):
     count = 0
     GPIO.setup(pin, GPIO.OUT)
     GPIO.output(pin, GPIO.LOW)
-    time.sleep(0.1)
+    time.sleep(0.05)
 
     GPIO.setup(pin, GPIO.IN)
-    while GPIO.input(pin) == GPIO.LOW:
-        count += 1
+    if GPIO.input(pin) == GPIO.LOW:
+        return 1
+    if GPIO.input(pin) == GPIO.HIGH:
+        return -1
 
-    return count
+    return 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
@@ -25,7 +27,7 @@ try:
         x_axis_value = rc_time(x_axis_pin)
         y_axis_value = rc_time(y_axis_pin)
         print("X-axis: {}, Y-axis: {}".format(x_axis_value, y_axis_value))
-        time.sleep(0.5)
+        time.sleep(0.05)
 except KeyboardInterrupt:
     GPIO.cleanup()
     print("Exiting")

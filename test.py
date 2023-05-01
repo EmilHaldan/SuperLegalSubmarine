@@ -8,12 +8,13 @@ def rc_time(pin):
     time.sleep(0.05)
 
     GPIO.setup(pin, GPIO.IN)
+    print("Reading pin {}".format(pin))
     if GPIO.input(pin) == GPIO.LOW:
         return 1
-    if GPIO.input(pin) == GPIO.HIGH:
+    elif GPIO.input(pin) == -GPIO.LOW:
         return -1
-
-    return 0
+    else:
+        return 0
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)

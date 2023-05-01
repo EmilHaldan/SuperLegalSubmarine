@@ -9,8 +9,8 @@ gpio15_channel = 10
 
 try:
     while True:
-        gpio14_voltage = adc.value * 3.3  # Convert the ADC reading to voltage (0-3.3V)
-        gpio15_voltage = adc.value * 3.3  # Convert the ADC reading to voltage (0-3.3V)
+        gpio14_voltage = adc(channel = gpio14_channel).value * 3.3  # Convert the ADC reading to voltage (0-3.3V)
+        gpio15_voltage = adc(channel = gpio15_channel).value * 3.3  # Convert the ADC reading to voltage (0-3.3V)
         
         print("GPIO14 Voltage: {:.2f}V, GPIO15 Voltage: {:.2f}V".format(gpio14_voltage, gpio15_voltage))
         time.sleep(0.5)

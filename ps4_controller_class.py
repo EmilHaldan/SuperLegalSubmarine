@@ -9,10 +9,10 @@ class MyController(Controller):
         Controller.__init__(self, **kwargs)
 
     def on_up_arrow_press(self):
-        return self.value
+        return "arrow up pressed"
 
     def on_down_arrow_press(self):
-        return self.value
+        return "arrow down pressed"
 
     def on_R3_left(self):
         return self.value

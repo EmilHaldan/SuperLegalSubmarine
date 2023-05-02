@@ -84,6 +84,13 @@ class MySubmarineController(Controller):
         self.button_states["R3_right"] = value
         self.write_json_to_file()
 
+    def on_R3_y_at_rest(self):
+        self.button_states["R3_up"] = 0
+        self.button_states["R3_down"] = 0
+        self.button_states["R3_right"] = 0
+        self.button_states["R3_left"] = 0
+        self.write_json_to_file()
+
 
     ##### SUBMARINE FUNCTIONS #####
     def print_status(self):

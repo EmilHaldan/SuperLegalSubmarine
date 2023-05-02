@@ -7,8 +7,7 @@ import struct
 class MySubmarineController(Controller):
 
     def __init__(self, body_voulme, syringe_capacity,
-                dry_mass, syringe_volume,
-                water_density=1,**kwargs):
+                dry_mass, water_density=1,**kwargs):
         Controller.__init__(self, **kwargs)
 
         self.button_states = {

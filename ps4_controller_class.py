@@ -1,4 +1,6 @@
+import json
 from pyPS4Controller.controller import Controller
+import os
 import time
 
 class MyController(Controller):
@@ -37,31 +39,9 @@ class MyController(Controller):
 
     def on_R3_right(self, value):
         self.button_states["R3_right"] = value
-
-def main(controller):
-    while True:
-        # Your code that uses the controller button states
-        if controller.button_states["arrow_up"]:
-            print("Arrow up TRUE.")
-        else: 
-            print("Arrow up False.")
-        if controller.button_states["arrow_down"]:
-            print("Arrow DOWN TRUE.")
-        else: 
-            print("Arrow DOWN False.")
-        print("R3 Up:", controller.button_states["R3_up"])
-        print("R3 Down:", controller.button_states["R3_down"])
-        print("R3 Left:", controller.button_states["R3_left"])
-        print("R3 Right:", controller.button_states["R3_right"])
-        time.sleep(0.2)
+        
 
 if __name__ == "__main__":
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-    controller.debug = False
-    controller.listen()
-    try:
-        main(controller)
-    except KeyboardInterrupt:
-        print("Exiting...")
-    finally:
-        controller.stop()
+    controller.listen(timeout=60) # Set timeout to 1 second, allowing the loop in main() to execute
+

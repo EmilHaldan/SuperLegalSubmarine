@@ -58,17 +58,15 @@ class MySubmarineController(Controller):
         self.button_states["arrow_up"] = True
         self.write_json_to_file()
 
-    def on_up_arrow_release(self):
-        self.button_states["arrow_up"] = False
-        self.write_json_to_file()
-
     def on_down_arrow_press(self):
         self.button_states["arrow_down"] = True
         self.write_json_to_file()
 
-    def on_down_arrow_release(self):
+    def on_up_down_arrow_release(self):
+        self.button_states["arrow_up"] = False
         self.button_states["arrow_down"] = False
         self.write_json_to_file()
+
 
     def on_R3_up(self, value):
         self.button_states["R3_up"] = value

@@ -2,6 +2,7 @@ import json
 from pyPS4Controller.controller import Controller
 import os
 import time
+import struct
 
 class MyController(Controller):
 
@@ -40,9 +41,20 @@ class MyController(Controller):
     def on_R3_right(self, value):
         self.button_states["R3_right"] = value
 
+    
     def listen(self, timeout=30, on_connect=None, on_disconnect=None, on_sequence=None):
         """
-        Copied as i needed to add the write_json_to_file function
+        Start listening for events on a given self.interface
+        :param timeout: INT, seconds. How long you want to wait for the self.interface.
+                        This allows you to start listening and connect your controller after the fact.
+                        If self.interface does not become available in N seconds, the script will exit with exit code 1.
+        :param on_connect: function object, allows to register a call back when connection is established
+        :param on_disconnect: function object, allows to register a call back when connection is lost
+        :param on_sequence: list, allows to register a call back on specific input sequence.
+                            e.g [{"inputs": ['up', 'up', 'down', 'down', 'left', 'right,
+                                             'left', 'right, 'start', 'options'],
+                                  "callback": () -> None)}]
+        :return: None
         """
         def on_disconnect_callback():
             self.is_connected = False
@@ -103,7 +115,7 @@ class MyController(Controller):
                         special_inputs_indexes[i] = check[0] + 1
                         special_input["callback"]()
                 event = read_events()
-                write_json_to_file()
+                write_json_to_file(self)
         except KeyboardInterrupt:
             print("\nExiting (Ctrl + C)")
             on_disconnect_callback()

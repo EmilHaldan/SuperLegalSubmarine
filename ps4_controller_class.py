@@ -7,22 +7,18 @@ class MyController(Controller):
 
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
-        self.target_pressure = 0
-        self.target_pressure_delta = 0.01
 
-    def on_up_arrow_press(self):
-        self.target_pressure -= self.target_pressure_delta
-        print(f"Target pressure level DECREASED by {self.target_pressure_delta} to: {self.target_pressure}")
+    def on_up_arrow_press(self, value):
+        return value
 
-    def on_down_arrow_press(self):
-        self.target_pressure += self.target_pressure_delta
-        print(f"Target pressure level INCREASE by {self.target_pressure_delta} to: {self.target_pressure}")
+    def on_down_arrow_press(self, value):
+        return value
 
     def on_R3_left(self, value):
-        print(f"Steering to the LEFT with {value} power")
+        return value
 
     def on_R3_right(self, value):
-        print(f"Steering to the RIGHT with {value} power")
+        return value
 
 
 if __name__ == "__main__":

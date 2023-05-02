@@ -29,13 +29,13 @@ class MySubmarineController(Controller):
         self.depth = 0
         self.body_density = 0
         self.SIZE = body_voulme
-        self.SYRINGE_CAPACITY = syringe_capacity
         self.water_density = water_density
          
-        self.syringe_volume = syringe_volume
-        self.syringe_mass = syringe_volume * water_density
+        self.SYRINGE_CAPACITY = syringe_capacity
+        self.syringe_volume = 0
+        self.syringe_mass = 0
 
-        self.dry_mass = self.current_mass - self.syringe_mass
+        self.dry_mass = dry_mass
         self.current_mass = dry_mass + self.syringe_mass
 
         self.vertical_speed = 0
@@ -140,7 +140,6 @@ if __name__ == "__main__":
                                         connecting_using_ds4drv=False,
                                         body_voulme = 2.7, 
                                         syringe_capacity = 0.06,
-                                        dry_mass = 2.67, 
-                                        syringe_volume = 0.06)
+                                        dry_mass = 2.67)
     controller.listen(timeout=60) # Set timeout to 1 second, allowing the loop in main() to execute
 

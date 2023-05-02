@@ -8,17 +8,17 @@ class MyController(Controller):
     def __init__(self, **kwargs):
         Controller.__init__(self, **kwargs)
 
-    def on_up_arrow_press(self, value):
-        return value
+    def on_up_arrow_press(self):
+        return self.value
 
-    def on_down_arrow_press(self, value):
-        return value
+    def on_down_arrow_press(self):
+        return self.value
 
-    def on_R3_left(self, value):
-        return value
+    def on_R3_left(self):
+        return self.value
 
-    def on_R3_right(self, value):
-        return value
+    def on_R3_right(self):
+        return self.value
 
 
 if __name__ == "__main__":

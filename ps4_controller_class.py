@@ -57,7 +57,8 @@ def main(controller):
 
 if __name__ == "__main__":
     controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
-    controller.start()
+    controller.debug = False
+    controller.listen()
     try:
         main(controller)
     except KeyboardInterrupt:

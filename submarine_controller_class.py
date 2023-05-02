@@ -6,8 +6,9 @@ import struct
 
 class MySubmarineController(Controller):
 
-    def __init__(self, body_voulme, syringe_capacity, water_density=1,
-                dry_mass = None, syringe_volume = None,**kwargs):
+    def __init__(self, body_voulme, syringe_capacity,
+                dry_mass, syringe_volume,
+                water_density=1,**kwargs):
         Controller.__init__(self, **kwargs)
 
         self.button_states = {
@@ -134,9 +135,12 @@ class MySubmarineController(Controller):
 
 
 
-
-
 if __name__ == "__main__":
-    controller = MySubmarineController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+    controller = MySubmarineController(interface="/dev/input/js0", 
+                                        connecting_using_ds4drv=False,
+                                        body_voulme = 2.7, 
+                                        syringe_capacity = 0.06,
+                                        dry_mass = 2.67, 
+                                        syringe_volume = 0.06)
     controller.listen(timeout=60) # Set timeout to 1 second, allowing the loop in main() to execute
 

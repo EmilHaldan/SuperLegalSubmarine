@@ -42,13 +42,13 @@ class MySubmarineController(Controller):
 
     def on_up_arrow_press(self):
         self.button_states["arrow_up"] = True
-        self.adjust_pressure_target(self, 0.1)
+        self.adjust_pressure_target(self, amount = 0.1)
         self.write_button_states_to_json()
         self.write_package_to_arduino_json()
 
     def on_down_arrow_press(self):
         self.button_states["arrow_down"] = True
-        self.adjust_pressure_target(self, -0.1)
+        self.adjust_pressure_target(self, amount = -0.1)
         self.write_button_states_to_json()
         self.write_package_to_arduino_json()
 

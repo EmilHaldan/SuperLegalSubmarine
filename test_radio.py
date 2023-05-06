@@ -11,7 +11,7 @@ radio = RF24(RASPBERRY_PI_GPIO_CE, RASPBERRY_PI_GPIO_CSN)
 radio.begin()
 radio.setChannel(CHANNEL)
 radio.setPALevel(3)
-radio.setDataRate(2) # 250kbps which is the lowest and most reliable data rate for longer range.
+radio.setDataRate(RF24.rf24_datarate_e.RF24_250KBPS) # 250kbps which is the lowest and most reliable data rate for longer range.
 radio.setAutoAck(0, 1)
 radio.openWritingPipe(0xF0F0F0F0E1)
 radio.openReadingPipe(1, 0xF0F0F0F0D2)

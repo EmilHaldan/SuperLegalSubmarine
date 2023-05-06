@@ -26,8 +26,9 @@ while True:
     while not radio.available():
         time.sleep(0.01)
         
-    received_data = []
-    radio.read(received_data, 32)
+    # received_data = []
+    # radio.read(received_data, 32)
+    received_data = radio.read(32)
     print("Received data: {}".format(received_data))
     
     # Send an acknowledgment message back

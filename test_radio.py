@@ -10,7 +10,7 @@ CHANNEL = 76
 radio = RF24(RASPBERRY_PI_GPIO_CE, RASPBERRY_PI_GPIO_CSN)
 radio.begin()
 radio.setChannel(CHANNEL)
-radio.setPALevel(RF24.RF24_PA_MAX)
+radio.setPALevel(3)
 radio.setDataRate(RF24.RF24_1MBPS)
 radio.setAutoAck(0, 1)
 radio.openWritingPipe(0xF0F0F0F0E1)
